@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeCraft - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .carousel-image {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+    }
+    .carousel-image.active {
+      opacity: 1;
+      position: relative;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-purple-100 via-blue-100 to-green-100 text-gray-800 font-sans">
+
+  <!-- ✨ Navbar from Old Version -->
+  <nav class="bg-gradient-to-r from-blue-200 via-purple-100 to-green-200 p-4 shadow-md flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-purple-700 tracking-wide">Vibe<span class="text-gray-900">Craft</span></h1>
+    <ul class="flex gap-6 text-base font-medium text-gray-700">
+      <li><a href="home.html" class="hover:text-purple-700 transition">Home</a></li>
+      <li><a href="Event.html" class="hover:text-purple-700 transition">History</a></li>
+      <li><a href="register.html" class="hover:text-purple-700 transition">Register</a></li>
+      <li><a href="login.html" class="hover:text-purple-700 transition">Login</a></li>
+      <li><a href="about.html" class="hover:text-purple-700 transition">About</a></li>
+      <li><a href="contact.html" class="hover:text-purple-700 transition">Contact</a></li>
+      <li><a href="feedback.html" class="hover:text-purple-700 transition">Feedback</a></li>
+      <li><a href="admin_login.html" class="hover:text-purple-700 transition">Admin</a></li>
+	      <li><a href="gallery.php" class="hover:text-purple-700 transition">Reviews</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🌟 Fullscreen Carousel with Welcome Message -->
+  <header class="relative w-full h-[85vh] overflow-hidden">
+    <div class="carousel-container absolute inset-0">
+      <img src="images/home15.jpg" class="carousel-image w-full h-full object-cover" />
+      <img src="images/home17.jpg" class="carousel-image w-full h-full object-cover" />
+      <img src="images/birthday19.jpg" class="carousel-image w-full h-full object-cover" />
+      <img src="images/wedding.jpg" class="carousel-image w-full h-full object-cover" />
+      <img src="images/concert.jpg" class="carousel-image w-full h-full object-cover" />
+      <img src="images/home16.jpg" class="carousel-image w-full h-full object-cover" />
+      <img src="images/venue.jpg" class="carousel-image w-full h-full object-cover" />
+    </div>
+
+    <!-- 🎉 Welcome Text Over Carousel -->
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-10 px-4">
+      <h2 class="text-4xl md:text-5xl font-extrabold drop-shadow-lg">Welcome to VibeCraft</h2>
+      <p class="text-xl md:text-2xl mt-2 font-semibold drop-shadow-md">Your Dream Events Start Here</p>
+    </div>
+
+    <!-- Overlay fade -->
+    <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+    <!-- Navigation Buttons -->
+    <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 hover:bg-white text-purple-800 rounded-full p-3 shadow z-20">
+      ❮
+    </button>
+    <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 hover:bg-white text-purple-800 rounded-full p-3 shadow z-20">
+      ❯
+    </button>
+  </header>
+
+  <!-- Who We Are -->
+  <section class="px-4 py-12 max-w-5xl mx-auto text-center">
+    <h2 class="text-4xl font-extrabold text-purple-800 mb-6">WHO WE ARE</h2>
+    <p class="font-semibold text-blue-800 mb-4">
+      With passion, creativity, and precision, <span class="text-purple-700 font-bold">VibeCraft</span> is a trusted event management brand in Bangladesh.
+      We’ve grown into a name recognized for transforming ordinary moments into extraordinary experiences.
+    </p>
+    <p class="text-gray-700 mb-4">
+      From large-scale conferences and product launches to intimate weddings and cultural programs, VibeCraft crafts experiences that
+      leave lasting impressions. We specialize in artist management, fashion shows, concerts, roadshows, and birthday celebrations.
+    </p>
+    <p class="text-gray-700">
+      Based in Dhaka and operating nationwide, VibeCraft believes in combining strategy, innovation, and aesthetic to deliver remarkable events.
+    </p>
+  </section>
+
+  <!-- Event Modes Section -->
+  <section class="py-16 text-center">
+    <h2 class="text-4xl font-bold text-purple-800 mb-10">Event Modes We Offer</h2>
+    <div class="flex flex-col md:flex-row justify-center gap-8 px-6">
+      <!-- In Person -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-full md:w-1/3 border border-purple-200">
+        <video autoplay muted loop class="w-full h-56 object-cover">
+          <source src="videos/inperson.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="p-5 text-left">
+          <h3 class="text-xl font-bold text-purple-700 mb-2">In Person</h3>
+          <p class="text-gray-700 mb-3">Real connections, right at your venue</p>
+          <a href="#" class="text-purple-600 font-medium hover:underline">Explore more →</a>
+        </div>
+      </div>
+
+      <!-- Virtual -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-full md:w-1/3 border border-orange-200">
+        <video autoplay muted loop class="w-full h-56 object-cover">
+          <source src="videos/virtual.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="p-5 text-left">
+          <h3 class="text-xl font-bold text-orange-600 mb-2">Virtual</h3>
+          <p class="text-gray-700 mb-3">Your screen, your stage</p>
+          <a href="#" class="text-orange-600 font-medium hover:underline">Explore more →</a>
+        </div>
+      </div>
+
+      <!-- Hybrid -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-full md:w-1/3 border border-indigo-200">
+        <video autoplay muted loop class="w-full h-56 object-cover">
+          <source src="videos/hybrid.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="p-5 text-left">
+          <h3 class="text-xl font-bold text-indigo-600 mb-2">Hybrid</h3>
+          <p class="text-gray-700 mb-3">Onsite impact meets virtual comfort</p>
+          <a href="#" class="text-indigo-600 font-medium hover:underline">Explore more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Event News Section -->
+  <section class="py-16 text-center">
+    <h2 class="text-3xl font-bold text-purple-800 mb-10 tracking-wide">Latest Event News</h2>
+    
+    <div class="relative max-w-4xl mx-auto mb-8 rounded-xl overflow-hidden shadow-xl border-4 border-purple-300">
+      <img id="eventPreviewImage" src="images/wedding20.jpg" alt="Event News" 
+        class="w-full h-96 object-cover transition-opacity duration-700 ease-in-out" />
+      <div id="eventCaption" 
+        class="absolute bottom-16 left-0 right-0 text-center text-4xl font-extrabold text-white drop-shadow-lg select-none pointer-events-none tracking-tight">
+        Wedding Gala 2025
+      </div>
+      <div id="eventSubCaption" 
+        class="absolute bottom-6 left-0 right-0 text-center text-white/90 text-lg font-semibold select-none pointer-events-none tracking-wide">
+        March 15, 2025 – A magical wedding celebration you can’t miss!
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-12 flex-wrap max-w-4xl mx-auto">
+      <div class="event-label text-purple-700 hover:text-purple-900" 
+        onmouseover="changeEvent('images/wedding20.jpg', 'Wedding Gala 2025', 'March 15, 2025 – A magical wedding celebration you can’t miss!')" 
+        onmouseout="resetEvent()">Wedding</div>
+      <div class="event-label text-blue-700 hover:text-blue-900" 
+        onmouseover="changeEvent('images/bithday20.jpg', 'Birthday Bash', 'April 2, 2025 – Celebrating with joy and color!')" 
+        onmouseout="resetEvent()">Birthday</div>
+      <div class="event-label text-pink-700 hover:text-pink-900" 
+        onmouseover="changeEvent('images/concert20.jpg', 'Summer Concert', 'June 10, 2025 – Live music and great vibes.')" 
+        onmouseout="resetEvent()">Concert</div>
+      <div class="event-label text-green-700 hover:text-green-900" 
+        onmouseover="changeEvent('images/corporate20.jpg', 'Corporate Meetup', 'May 20, 2025 – Networking in style.')" 
+        onmouseout="resetEvent()">Corporate</div>
+      <div class="event-label text-indigo-700 hover:text-indigo-900" 
+        onmouseover="changeEvent('images/venue20.jpg', 'Venue Showcase', 'Ongoing – Stunning venues for your dream events.')" 
+        onmouseout="resetEvent()">Venue Setup</div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section id="contact" class="py-10 px-4 text-center text-gray-800 rounded-t-lg">
+    <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
+    <p>Have a question or want to plan your next event? Contact us today!</p>
+    <a href="contact.html" class="mt-4 inline-block bg-purple-700 text-white px-6 py-2 rounded hover:bg-purple-600 transition">Contact Us</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 w-full bg-gradient-to-r from-purple-100 to-blue-100 text-center text-sm text-gray-600 py-2 shadow-inner">
+    <p>© 2025 Evneto. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Carousel Logic
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".carousel-image");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+      });
+      slides[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 4000);
+    showSlide(currentSlide);
+
+    // Latest Event News Logic
+    const defaultImage = 'images/wedding4.jpg';
+    const defaultCaption = 'Wedding Gala 2025';
+    const defaultSubCaption = 'March 15, 2025 – A magical wedding celebration you can’t miss!';
+
+    function changeEvent(imageUrl, captionText, subCaptionText) {
+      const img = document.getElementById('eventPreviewImage');
+      const caption = document.getElementById('eventCaption');
+      const subCaption = document.getElementById('eventSubCaption');
+
+      img.style.opacity = 0;
+      setTimeout(() => {
+        img.src = imageUrl;
+        caption.textContent = captionText;
+        subCaption.textContent = subCaptionText;
+        img.style.opacity = 1;
+      }, 300);
+    }
+
+    function resetEvent() {
+      changeEvent(defaultImage, defaultCaption, defaultSubCaption);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['user_id'])) {
+    header("Location: login.html");
+    exit;
+  }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VibeCraft - Feedback</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .star {
+      font-size: 2rem;
+      cursor: pointer;
+      color: #e5e7eb;
+      transition: color 0.3s ease;
+    }
+    .star:hover,
+    .star.selected {
+      color: gold;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-purple-100 via-blue-100 to-green-100 text-gray-800 font-sans">
+
+ <!-- ✨ Navbar -->
+  <nav class="bg-gradient-to-r from-blue-200 via-purple-100 to-green-200 p-4 shadow-md flex justify-between items-center ">
+    <h1 class="text-3xl font-bold text-purple-700 tracking-wide">Vibe<span class="text-gray-900">Craft</span></h1>
+    <ul class="flex gap-6 text-base font-medium text-gray-700">
+      <li><a href="home.html" class="hover:text-purple-700 transition">Home</a></li>
+      <li><a href="Event.html" class="hover:text-purple-700 transition">History</a></li>
+      <li><a href="register.html" class="hover:text-purple-700 transition">Register</a></li>
+      <li><a href="login.html" class="hover:text-purple-700 transition">Login</a></li>
+      <li><a href="about.html" class="hover:text-purple-700 transition">About</a></li>
+      <li><a href="contact.html" class="hover:text-purple-700 transition">Contact</a></li>
+      <li><a href="feedback.html" class="hover:text-purple-700 transition">Feedback</a></li>
+      <li><a href="admin_login.html" class="hover:text-purple-700 transition">Admin</a></li>
+      <li><a href="gallery.php" class="hover:text-purple-700 transition">Reviews</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="text-4xl font-extrabold text-purple-800 mb-2 text-center py-5">
+    Share Your VibeCraft Experience
+  </header>
+
+  <!-- Feedback Form -->
+  <main class="max-w-3xl mx-auto p-6 mt-8 text-white">
+    <form class="space-y-6 text-left bg-white/60 backdrop-blur-md p-8 rounded-lg shadow-xl text-gray-800"
+          action="submit_feedback.php"
+          method="POST"
+          enctype="multipart/form-data">
+
+      <div>
+        <label class="block mb-1 text-sm font-semibold">Your Name</label>
+        <input type="text" name="name" class="w-full px-4 py-2 rounded border border-gray-300 bg-white" required />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Email</label>
+        <input type="email" name="email" class="w-full px-4 py-2 rounded border border-gray-300 bg-white" required />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Event Type</label>
+        <select name="event-type" class="w-full px-4 py-2 rounded border border-gray-300 bg-white">
+          <option>Wedding</option>
+          <option>Birthday</option>
+          <option>Concert</option>
+          <option>Corporate</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Your Feedback</label>
+        <textarea name="feedback" rows="4" class="w-full px-4 py-2 rounded border border-gray-300 bg-white" required></textarea>
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Rate Us</label>
+        <div id="star-rating" class="flex gap-2 text-2xl">
+          <span class="star" data-star="1">★</span>
+          <span class="star" data-star="2">★</span>
+          <span class="star" data-star="3">★</span>
+          <span class="star" data-star="4">★</span>
+          <span class="star" data-star="5">★</span>
+        </div>
+        <input type="hidden" name="rating" id="rating-value" required />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Upload an Event Photo</label>
+        <input type="file" accept="image/*" name="image" id="image-upload" class="w-full px-4 py-2 rounded border border-gray-300 bg-white" />
+        <div class="mt-3">
+          <img id="preview" class="rounded w-40 h-40 object-cover hidden" />
+        </div>
+      </div>
+
+      <button type="submit" class="mt-4 inline-block bg-purple-800 text-white px-6 py-2 rounded hover:bg-purple-600 transition">
+        Submit Feedback
+      </button>
+
+    </form>
+  </main>
+  <footer class="bg-gradient-to-r from-purple-100 to-blue-100 text-center text-sm text-gray-600 py-4 shadow-inner">
+    <p>© 2025 VibeCraft. All Rights Reserved.</p>
+  </footer>
+  <script>
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating-value');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-star'));
+        ratingInput.value = selectedRating;
+        updateStars();
+      });
+    });
+
+    function updateStars() {
+      stars.forEach(star => {
+        const starValue = parseInt(star.getAttribute('data-star'));
+        if (starValue <= selectedRating) {
+          star.classList.add('selected');
+        } else {
+          star.classList.remove('selected');
+        }
+      });
+    }
+
+    document.getElementById('image-upload').addEventListener('change', function () {
+      const preview = document.getElementById('preview');
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+          preview.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>

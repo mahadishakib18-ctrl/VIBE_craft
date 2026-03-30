@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login – VibeCraft</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-b from-purple-100 via-blue-100 to-green-100 text-gray-800 min-h-screen flex flex-col">
+ <!-- ✨ Navbar -->
+  <nav class="bg-gradient-to-r from-blue-200 via-purple-100 to-green-200 p-4 shadow-md flex justify-between items-center ">
+    <h1 class="text-3xl font-bold text-purple-700 tracking-wide">Vibe<span class="text-gray-900">Craft</span></h1>
+    <ul class="flex gap-6 text-base font-medium text-gray-700">
+      <li><a href="home.html" class="hover:text-purple-700 transition">Home</a></li>
+      <li><a href="Event.html" class="hover:text-purple-700 transition">History</a></li>
+      <li><a href="register.html" class="hover:text-purple-700 transition">Register</a></li>
+      <li><a href="login.html" class="hover:text-purple-700 transition">Login</a></li>
+      <li><a href="about.html" class="hover:text-purple-700 transition">About</a></li>
+      <li><a href="contact.html" class="hover:text-purple-700 transition">Contact</a></li>
+      <li><a href="feedback.html" class="hover:text-purple-700 transition">Feedback</a></li>
+      <li><a href="admin_login.html" class="hover:text-purple-700 transition">Admin</a></li>
+      <li><a href="gallery.php" class="hover:text-purple-700 transition">Reviews</a></li>
+    </ul>
+  </nav>
+  <!-- Admin Login Form -->
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white/80 backdrop-blur-md p-8 rounded-xl shadow-lg">
+      <h2 class="text-3xl font-bold text-purple-800 mb-6 text-center">Admin Login</h2>
+
+      <form method="POST" action="admin_auth.php" class="space-y-4">
+        <div>
+          <label for="username" class="block text-sm font-semibold">Username</label>
+          <input type="text" name="username" id="username" required
+                 class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-semibold">Password</label>
+          <input type="password" name="password" id="password" required
+                 class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <div>
+          <button type="submit"
+                  class="w-full bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 rounded shadow-md transition">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  
+   <footer class="bg-gradient-to-r from-purple-100 to-blue-100 text-center text-sm text-gray-600 py-4 shadow-inner">
+    <p>© 2025 VibeCraft. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

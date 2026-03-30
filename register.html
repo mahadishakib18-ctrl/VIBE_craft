@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register – VibeCraft</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-b from-green-100 via-blue-100 to-purple-100 min-h-screen flex flex-col">
+
+  <!-- ✨ Navbar -->
+  <nav class="bg-gradient-to-r from-blue-200 via-purple-100 to-green-200 p-4 shadow-md flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-purple-700 tracking-wide">Vibe<span class="text-gray-900">Craft</span></h1>
+    <ul class="flex gap-6 text-base font-medium text-gray-700">
+      <li><a href="home.html" class="hover:text-purple-700 transition">Home</a></li>
+      <li><a href="Event.html" class="hover:text-purple-700 transition">History</a></li>
+      <li><a href="register.html" class="hover:text-purple-700 transition">Register</a></li>
+      <li><a href="login.html" class="hover:text-purple-700 transition">Login</a></li>
+      <li><a href="about.html" class="hover:text-purple-700 transition">About</a></li>
+      <li><a href="contact.html" class="hover:text-purple-700 transition">Contact</a></li>
+      <li><a href="feedback.html" class="hover:text-purple-700 transition">Feedback</a></li>
+      <li><a href="admin_login.html" class="hover:text-purple-700 transition">Admin</a></li>
+      <li><a href="gallery.php" class="hover:text-purple-700 transition">Reviews</a></li>
+    </ul>
+  </nav>
+
+  <!-- Registration Form -->
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="w-full max-w-2xl bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8">
+      <h2 class="text-3xl font-bold text-purple-800 mb-6 text-center">Registration Form</h2>
+
+      <form action="register.php" method="POST" onsubmit="return validateForm()" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- First Name -->
+        <div>
+          <label for="first_name" class="block text-sm font-semibold mb-1">First Name</label>
+          <input type="text" name="first_name" id="first_name" required placeholder="Shemonty"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <!-- Last Name -->
+        <div>
+          <label for="last_name" class="block text-sm font-semibold mb-1">Last Name</label>
+          <input type="text" name="last_name" id="last_name" required placeholder="Fatema"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <!-- Username -->
+        <div>
+          <label for="username" class="block text-sm font-semibold mb-1">Username</label>
+          <input type="text" name="username" id="username" required placeholder="shemonty123"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label for="phone" class="block text-sm font-semibold mb-1">Phone Number</label>
+          <input type="tel" name="phone" id="phone" required placeholder="e.g. 017XXXXXXXX"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-semibold mb-1">Email Address</label>
+          <input type="email" name="email" id="email" required placeholder="you@example.com"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <!-- City -->
+        <div>
+          <label for="city" class="block text-sm font-semibold mb-1">City</label>
+          <input type="text" name="city" id="city" required placeholder="Dhaka"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <!-- Password -->
+        <div class="md:col-span-2">
+          <label for="password" class="block text-sm font-semibold mb-1">Password</label>
+          <input type="password" name="password" id="password" required placeholder="Minimum 6 chars with uppercase, number, special char"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+          <p class="text-xs text-gray-600 mt-1">
+            Must be at least 6 characters and include an uppercase letter, number, and a special character.
+          </p>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="md:col-span-2">
+          <label for="confirm_password" class="block text-sm font-semibold mb-1">Confirm Password</label>
+          <input type="password" name="confirm_password" id="confirm_password" required placeholder="Re-enter your password"
+            class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-purple-400">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="md:col-span-2">
+          <button type="submit"
+            class="w-full bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 rounded shadow-md transition">
+            Register
+          </button>
+        </div>
+
+        <!-- Centered Error Messages -->
+        <div class="md:col-span-2 text-center">
+          <p id="password-error" class="text-sm text-red-600 font-medium"></p>
+        </div>
+        <div class="md:col-span-2 text-center">
+          <p id="submit-error" class="text-sm font-medium mt-2"></p>
+        </div>
+      </form>
+
+      <p class="text-sm text-center mt-6">
+        Already registered?
+        <a href="login.html" class="text-blue-600 hover:underline">Login here</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    function validatePassword() {
+      const password = document.getElementById('password').value.trim();
+      const lengthValid = password.length >= 6;
+      const upperValid = /[A-Z]/.test(password);
+      const numberValid = /[0-9]/.test(password);
+      // Check for any special character (non-alphanumeric)
+      const specialValid = /[^a-zA-Z0-9]/.test(password);
+
+      if (!lengthValid || !upperValid || !numberValid || !specialValid) {
+        document.getElementById("password-error").innerText =
+          "❌ Password must be at least 6 characters and include an uppercase letter, number, and special character.";
+        return false;
+      }
+
+      document.getElementById("password-error").innerText = "";
+      return true;
+    }
+
+    function validateForm() {
+      const passwordOK = validatePassword();
+
+      if (passwordOK) {
+        document.getElementById("submit-error").innerText = "✅ Form is valid!";
+        document.getElementById("submit-error").style.color = "green";
+        return true;
+      } else {
+        document.getElementById("submit-error").innerText = "❌ Fix password before submitting.";
+        document.getElementById("submit-error").style.color = "red";
+        return false;
+      }
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-600 text-xs py-4">
+    &copy; 2025 VibeCraft. All rights reserved.
+  </footer>
+
+</body>
+</html>
