@@ -1,0 +1,1 @@
+VibeCraft is a web-based Event Management and Booking System developed using HTML, Tailwind CSS, JavaScript, PHP, and MySQL. The platform allows users to book customized events, track booking status, submit feedback, and communicate with administrators through a secure and structured dashboard system.
